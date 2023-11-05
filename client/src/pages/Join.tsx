@@ -1,8 +1,8 @@
-import Form from '../components/Join/Form'  
+import Form from '../components/Join/Form'
 
 function Join() {
   return (
-    <div>
+    <div className='page'>
       <h1>Join</h1>
       <Form />
     </div>
