@@ -22,7 +22,6 @@ function Messages() {
   return (
     <div>
       {messages.map((message, index) => {
-        console.log(message, index)
         return <Message key={index} message={message} />
       })}
     </div>
