@@ -1,7 +1,7 @@
-import { createBrowserRouter, redirect } from 'react-router-dom'
+import { createBrowserRouter } from 'react-router-dom'
 import Join from './pages/Join'
 import Chat from './pages/Chat'
-import Main from './pages/Main'
+import Home from './pages/Home'
 import Layout from './pages/Layout'
 
 export const router = createBrowserRouter([
@@ -11,7 +11,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Main />
+        element: <Home />
       },
       {
         path: 'join',
