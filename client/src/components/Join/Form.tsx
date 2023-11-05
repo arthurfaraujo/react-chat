@@ -1,4 +1,3 @@
-import { AiOutlineSend } from 'react-icons/ai'
 import { useRef, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { SocketContext } from '../../contexts/Socket'
@@ -9,10 +8,9 @@ function Form() {
   const navigate = useNavigate()
 
   if (user !== '') alert('You are already logged in')
-  
+
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-
 
     const name = nameRef.current?.value || ''
     if (!name.trim()) {
@@ -30,10 +28,12 @@ function Form() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <p>{user}</p>
-      <input ref={nameRef} />
+      <div>
+        <label htmlFor="user">Username</label>
+        <input ref={nameRef} name="user" />
+      </div>
       <button type="submit">
-        <AiOutlineSend />
+        continue
       </button>
     </form>
   )
