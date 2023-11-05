@@ -10,7 +10,7 @@
   min-height: 100vh;
 }
 
-.main, .page {
+.home, .page {
   flex: 1 0 auto;
 }
 
