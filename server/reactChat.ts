@@ -6,13 +6,13 @@ const PORT = process.env.PORT || 3000
 
 const origin =
   process.env.NODE_ENV === 'production'
-    ? 'url_real_aqui'
+    ? process.env.CLIENT_URL
     : `http://localhost:5173`
 
 const app = express()
 const io = new Server(app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`)
-}), { cors: { origin: origin } })
+}), { cors: { origin: '*' } })
 
 io.on('connection', socket => {
   console.log('a user connected', socket.id)
