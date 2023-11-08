@@ -1,4 +1,4 @@
-import { MessageIfc } from '../../pages/MessageIfc'
+import { MessageIfc } from '../../interfaces/MessageIfc'
 
 function Message({ message }: { message: MessageIfc }) {
   return (
