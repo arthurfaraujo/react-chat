@@ -20,7 +20,7 @@ function Messages() {
   }, [socket])
 
   return (
-    <div>
+    <div className="messages">
       {messages.map((message, index) => {
         return <Message key={index} message={message} />
       })}

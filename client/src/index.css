@@ -8,6 +8,7 @@
   display: flex;
   flex-flow: column;
   min-height: 100vh;
+  align-items: center;
 }
 
 .home, .page {
@@ -118,4 +119,50 @@ header button {
 
 .page > form input:focus {
   outline: none;
+}
+
+.chat {
+  flex: 1;
+  display: flex;
+  flex-flow: column;
+  width: 50rem;
+  /* background-color: aqua; */
+}
+
+.chat > form {
+  width: 100%;
+  height: 3rem;
+  display: flex;
+  /* background-color: aquamarine; */
+  align-self: flex-end;
+}
+
+.chat > form > input {
+  width: 90%;
+  height: 100%;
+  padding: .2rem .4rem;
+  font-size: 1.5rem;
+  border: none;
+}
+
+.chat > form > input:focus {
+  /* outline: 1px solid #626488; */
+  outline: none;
+}
+
+.chat > form > button {
+  width: 10%;
+  height: 100%;
+  border: none;
+  background-color: #daffcf;
+}
+
+.chat .messages {
+  flex: 1;
+  display: flex;
+  flex-flow: column;
+  padding: 1rem;
+  gap: .5rem;
+  background-color: #222222;
+  color: #ffe;
 }

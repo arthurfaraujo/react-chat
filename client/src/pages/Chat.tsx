@@ -13,10 +13,10 @@ function Chat() {
   })
 
   return (
-    <div className='page'>
-      <h1>Chat</h1>
-      <Form />
+    <div className='chat'>
+      {/* <h1>Chat</h1> */}
       <Messages />
+      <Form />
     </div>
   )
 }
