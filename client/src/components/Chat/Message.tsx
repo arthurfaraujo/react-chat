@@ -6,7 +6,7 @@ function Message({ message }: { message: MessageIfc }) {
   const { user } = useContext(SocketContext)
 
   return (
-    <div className={message.user === user ? 'myMessage' : '' }>
+    <div className={message.user === user ? 'myMessage' : 'message' }>
       <h3>{message.user}</h3>
       <p>{message.content}</p>
     </div>

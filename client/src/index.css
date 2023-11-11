@@ -162,14 +162,28 @@ header button {
   flex: 1;
   display: flex;
   flex-flow: column;
+  max-height: calc(100vh - 7rem) ;
   padding: 1rem;
   border-radius: 5px 5px 0 0;
   gap: 0.5rem;
   background-color: #222222;
   color: #ffe;
+  overflow-y: auto;
+}
+
+.message, .myMessage {
+  max-width: fit-content;
+  border-radius: .1rem .1rem .1rem .5rem;
+  text-align: right;
+  padding: 0.5rem;
+}
+
+.message {
+  background-color: #5b5b5b;
 }
 
 .myMessage {
+  background-color: #373737;
   align-self: flex-end;
   /* background-color: #daffcf; */
   /* color: #363636; */
