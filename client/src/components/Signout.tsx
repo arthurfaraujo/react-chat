@@ -11,7 +11,7 @@ function SignoutButton() {
     navigate('/join')
   }
 
-  return user ? <button onClick={handleSignout}>Signout</button> : null
+  return user ? <button style={{font: 'inherit', fontStyle: 'inherit'}} onClick={handleSignout}>Signout</button> : null
 }
 
 export default SignoutButton
