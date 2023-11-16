@@ -28,6 +28,6 @@ io.on('connection', socket => {
 
   socket.on('message', ({ user, content }) => {
     console.log('message', user, content)
-    io.emit('receive_message', { user, content, authorId: socket.id })
+    io.emit('receive_message', { user, content, authorId: socket.id, time: new Date().toTimeString() })
   })
 })

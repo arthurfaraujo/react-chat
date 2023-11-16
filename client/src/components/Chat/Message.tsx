@@ -9,6 +9,7 @@ function Message({ message }: { message: MessageIfc }) {
     <div className={message.user === user ? 'myMessage' : 'message' }>
       <h3>{message.user}</h3>
       <p>{message.content}</p>
+      <span className='timeString'>{message.time.slice(0, 5)}</span>
     </div>
   )
 }

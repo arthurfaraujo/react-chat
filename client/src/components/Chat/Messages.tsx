@@ -18,9 +18,7 @@ function Messages() {
 
   useEffect(() => {
     socket.on('receive_message', (message: MessageIfc) => {
-      setMessages(messages => {
-        return [...messages, message]
-      })
+      setMessages(messages => [...messages, message])
     })
 
     return () => {
