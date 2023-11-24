@@ -10,9 +10,27 @@ const origin =
     : `http://localhost:5173`
 
 const app = express()
-const io = new Server(app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`)
-}), { cors: { origin: '*' } })
+
+const chats = [
+  {
+    user: 'admin',
+    lastMessage: 'Welcome to the chat app'
+  },
+  {
+    user: 'arthur',
+    lastMessage: 'Hello'
+  }
+]
+
+app.get('/api/chats', (req, res) => {
+  res.json({ chats })
+})
+const io = new Server(
+  app.listen(PORT, () => {
+    console.log(`Server listening on port ${PORT}`)
+  }),
+  { cors: { origin: '*' } }
+)
 
 io.on('connection', socket => {
   console.log('a user connected', socket.id)
@@ -28,6 +46,10 @@ io.on('connection', socket => {
 
   socket.on('message', ({ user, content }) => {
     console.log('message', user, content)
-    io.emit('receive_message', { user, content, time: new Date().toTimeString() })
+    io.emit('receive_message', {
+      user,
+      content,
+      time: new Date().toTimeString()
+    })
   })
 })

@@ -1,6 +1,7 @@
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import Form from '../components/Chat/Form'
 import Messages from '../components/Chat/Messages'
+import List from '../components/Chat/List'
 import { useContext, useEffect } from 'react'
 import { SocketContext } from '../contexts/Socket'
 
@@ -13,10 +14,12 @@ function Chat() {
   })
 
   return (
-    <div className='chat'>
-      {/* <h1>Chat</h1> */}
-      <Messages />
-      <Form />
+    <div className="content">
+      <List />
+      <div className="chat">
+        <Messages />
+        <Form />
+      </div>
     </div>
   )
 }

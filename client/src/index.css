@@ -124,12 +124,47 @@ header button {
   outline: none;
 }
 
+.content {
+  flex: 1 0 auto;
+  display: flex;
+  width: 100%;
+  gap: 2rem;
+  padding: 1.5rem;
+  /* background-color: aquamarine; */
+
+}
+
+.list {
+  flex: 1 0 auto;
+  display: flex;
+  flex-flow: column;
+  gap: 0.5rem;
+  max-width: 25%;
+}
+
+.list > ul {
+  display: flex;
+  flex-flow: column;
+  gap: 0.3rem;
+  list-style: none;
+}
+
+.list > ul > li {
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  margin-bottom: 0.5rem;
+  background-color: #343434;
+  color: #ffe;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
 .chat {
   flex: 1 0 auto;
   display: flex;
   flex-flow: column;
   min-width: 50%;
-  max-width: 70%;
+  /* max-width: 70%; */
   /* background-color: aqua; */
 }
 
