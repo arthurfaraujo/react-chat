@@ -2,7 +2,7 @@ import { AiOutlineSend } from 'react-icons/ai'
 import { useRef, useContext } from 'react'
 import { SocketContext } from '../../contexts/Socket'
 
-function Form() {
+function Form({ chatId }: {chatId: string}) {
   const { socket, user } = useContext(SocketContext)
   const contentRef = useRef<HTMLInputElement>(null)
 
@@ -17,10 +17,7 @@ function Form() {
       return
     }
 
-    socket.emit('message', {  
-      user,
-      content
-    })
+    socket.emit('private message', {sender: user, chatId, content})
   }
 
   return (

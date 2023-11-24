@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom'
 import Join from './pages/Join'
-import Chat from './pages/Chat'
+import ChatPage from './pages/Chat'
 import Home from './pages/Home'
 import Layout from './pages/Layout'
 
@@ -19,7 +19,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'chat',
-        element: <Chat />
+        element: <ChatPage />
       }
     ]
   }

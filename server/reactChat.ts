@@ -1,6 +1,7 @@
 import express from 'express'
-import { Server } from 'socket.io'
+import { Server, Socket } from 'socket.io'
 import 'dotenv/config'
+import cors from 'cors'
 
 const PORT = process.env.PORT || 3000
 
@@ -11,20 +12,14 @@ const origin =
 
 const app = express()
 
-const chats = [
-  {
-    user: 'admin',
-    lastMessage: 'Welcome to the chat app'
-  },
-  {
-    user: 'arthur',
-    lastMessage: 'Hello'
-  }
-]
+let usersConnected: { socketId: string }[] = []
 
-app.get('/api/chats', (req, res) => {
-  res.json({ chats })
+app.use(cors({ origin: '*' }))
+
+app.get('/api/users', (req, res) => {
+  res.json({ usersConnected })
 })
+
 const io = new Server(
   app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`)
@@ -34,6 +29,15 @@ const io = new Server(
 
 io.on('connection', socket => {
   console.log('a user connected', socket.id)
+  
+  usersConnected = Array.from(io.sockets.sockets).map(socket => {
+    return {
+      socketId: socket[0],
+      socketName: socket[1].data.username
+    }
+  })
+
+  console.log(usersConnected)
 
   socket.on('disconnect', reason => {
     console.log('user disconnected', socket.id, reason)
@@ -51,5 +55,11 @@ io.on('connection', socket => {
       content,
       time: new Date().toTimeString()
     })
+  })
+
+  socket.on('private message', ({ sender, chatId, content }) => {
+    socket
+      .to(chatId)
+      .emit('private message', { sender, senderId: socket.id, content })
   })
 })
