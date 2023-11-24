@@ -1,7 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
+import { SocketContext } from '../../contexts/Socket'
 const server = import.meta.env.VITE_SERVER_URL || 'http://localhost:8080'
 
 function List({ handleClick }: { handleClick: (chatId: string) => void }) {
+  const {socket} = useContext(SocketContext)
   const [users, setUsers] = useState<{ socketId: string, socketName: string }[]>([])
 
   useEffect(() => {
@@ -26,7 +28,7 @@ function List({ handleClick }: { handleClick: (chatId: string) => void }) {
       <ul>
         {users.map((user, index) => {
           console.log(user)
-          return (
+          if (user.socketId !== socket.id) return (
             <li key={index} onClick={() => handleClick(user.socketId)}>
               <div className="info">
                 <h2>{user.socketName}</h2>

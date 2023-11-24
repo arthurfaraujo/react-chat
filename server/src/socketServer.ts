@@ -1,31 +1,7 @@
-import express from 'express'
-import { Server, Socket } from 'socket.io'
-import 'dotenv/config'
-import cors from 'cors'
+import { io } from './reactChat'
 
-const PORT = process.env.PORT || 3000
 
-const origin =
-  process.env.NODE_ENV === 'production'
-    ? process.env.CLIENT_URL
-    : `http://localhost:5173`
-
-const app = express()
-
-let usersConnected: { socketId: string }[] = []
-
-app.use(cors({ origin: '*' }))
-
-app.get('/api/users', (req, res) => {
-  res.json({ usersConnected })
-})
-
-const io = new Server(
-  app.listen(PORT, () => {
-    console.log(`Server listening on port ${PORT}`)
-  }),
-  { cors: { origin: '*' } }
-)
+export let usersConnected: { socketId: string }[] = []
 
 io.on('connection', socket => {
   console.log('a user connected', socket.id)
@@ -46,6 +22,7 @@ io.on('connection', socket => {
   socket.on('setUser', username => {
     socket.data.username = username
     console.log('username', socket.data.username)
+    console.log(usersConnected)
   })
 
   socket.on('message', ({ user, content }) => {

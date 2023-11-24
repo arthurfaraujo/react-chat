@@ -5,8 +5,8 @@
   "main": "reactChat.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx tsx --watch --watch-preserve-output reactChat.ts",
-    "build": "npx tsup reactChat.ts --format cjs --minify --clean --sourcemap --legacy-output --target node18",
+    "dev": "npx tsx --watch --watch-preserve-output src/reactChat.ts",
+    "build": "npx tsup src/reactChat.ts --format cjs --minify --clean --sourcemap --legacy-output --target node18",
     "start": "node dist/reactChat.js"
   },
   "author": "",
